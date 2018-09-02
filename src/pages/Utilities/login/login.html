@@ -1,3 +1,26 @@
-<ion-content padding>
+<ion-content padding disable-scroll >
+    <div class="bg-main">
+    </div>
+
+<ion-slides>
+    <ion-slide>
+            <ion-card>
+            <ion-card-content>
+                <h1 class="signinTitle">Walk In CRM</h1>
+            <ion-item>
+              <ion-label color="whiter" floating>Email</ion-label>
+              <ion-input type="email"  [(ngModel)]="email" autofocus ></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label color="whiter" floating>Password</ion-label>
+              <ion-input type="password"  [(ngModel)]="pass"></ion-input>
+            </ion-item>
+            <button ion-button  color="primary"  (click)="checkData()">Login</button>
+
+            </ion-card-content>
+        </ion-card>
+    </ion-slide>
+</ion-slides>
+
 
 </ion-content>

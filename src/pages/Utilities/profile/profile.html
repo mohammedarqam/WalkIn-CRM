@@ -7,6 +7,27 @@
 
 <ion-content padding>
 
+  <ion-card *ngFor="let u of user | async" >
+    <ion-card-content>
+      <ion-card-title>
+        {{u.Name}}
+      </ion-card-title>
 
+      
+    </ion-card-content>
+  </ion-card>
+
+
+
+
+
+
+
+
+
+  <button ion-button color="danger" block (click)="logout()" >
+    <ion-icon name=""></ion-icon>
+    Log Out
+  </button>
 
 </ion-content>
