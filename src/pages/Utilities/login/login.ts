@@ -27,7 +27,6 @@ export class LoginPage {
     loading.present();
     firebase.auth().onAuthStateChanged((user)=>{
       if(user){
-        console.log(user.uid);
         this.navCtrl.setRoot(TabsPage);
       }
     })

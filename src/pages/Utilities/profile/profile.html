@@ -7,20 +7,20 @@
 
 <ion-content padding>
 
-  <ion-card *ngFor="let u of user | async" >
+  <ion-card>
     <ion-card-content>
-      <ion-card-title>
-        {{u.Name}}
-      </ion-card-title>
+      <ion-item>
+        <h2 ion-text item-start color="primary">Name</h2>
+        <h2 ion-text item-end>{{userName}}</h2>
+      </ion-item>
 
-      
+      <ion-item>
+        <h2 ion-text item-start color="primary">Level</h2>
+        <h2 ion-text item-end>{{level}}</h2>
+      </ion-item>
+
     </ion-card-content>
   </ion-card>
-
-
-
-
-
 
 
 
