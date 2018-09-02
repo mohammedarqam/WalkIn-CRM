@@ -1,0 +1,7 @@
+{
+  "name": "wcrm",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
