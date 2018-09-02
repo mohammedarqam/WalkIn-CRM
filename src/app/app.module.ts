@@ -3,33 +3,73 @@ import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
-import { AboutPage } from '../pages/about/about';
-import { ContactPage } from '../pages/contact/contact';
-import { HomePage } from '../pages/home/home';
-import { TabsPage } from '../pages/tabs/tabs';
-
+import {AngularFireModule} from 'angularfire2';
+import {AngularFireDatabaseModule} from 'angularfire2/database';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { HomePage } from '../pages/Utilities/home/home';
+import { TabsPage } from '../pages/Utilities/tabs/tabs';
+import { ClientListPage } from '../pages/Clients/client-list/client-list';
+import { ProfilePage } from '../pages/Utilities/profile/profile';
+import { LoginPage } from '../pages/Utilities/login/login';
+import { AddClientPage } from '../pages/Clients/add-client/add-client';
+import { ClientDetailsPage } from '../pages/Clients/client-details/client-details';
+import { CalenderPage } from '../pages/Status/calender/calender';
+import { TimelinePage } from '../pages/Status/timeline/timeline';
+import { AddAMeetingPage } from '../pages/Activities/add-a-meeting/add-a-meeting';
+import { AddPhoneCallPage } from '../pages/Activities/add-phone-call/add-phone-call';
+import { CloseClientPage } from '../pages/Activities/close-client/close-client';
+
+export const firebaseConfig=({
+  apiKey: "AIzaSyDNBLBd2H_xJ3Ahhif0oZxaPJnXGK9nqUY",
+  authDomain: "walk-in-crm.firebaseapp.com",
+  databaseURL: "https://walk-in-crm.firebaseio.com",
+  projectId: "walk-in-crm",
+  storageBucket: "walk-in-crm.appspot.com",
+  messagingSenderId: "278213082786"
+})
+
 
 @NgModule({
   declarations: [
     MyApp,
-    AboutPage,
-    ContactPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    ClientListPage,
+    ProfilePage,
+    LoginPage,
+    AddClientPage,
+    ClientDetailsPage,
+    CalenderPage,
+    TimelinePage,
+    AddAMeetingPage,
+    AddPhoneCallPage,
+    CloseClientPage,
+
+
+  
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireDatabaseModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    AboutPage,
-    ContactPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    ClientListPage,
+    ProfilePage,
+    LoginPage,
+    AddClientPage,
+    ClientDetailsPage,
+    CalenderPage,
+    TimelinePage,
+    AddAMeetingPage,
+    AddPhoneCallPage,
+    CloseClientPage,
   ],
   providers: [
     StatusBar,

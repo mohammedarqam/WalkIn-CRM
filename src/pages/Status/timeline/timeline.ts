@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 /**
- * Generated class for the ActivityPage page.
+ * Generated class for the TimelinePage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -10,16 +10,16 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-activity',
-  templateUrl: 'activity.html',
+  selector: 'page-timeline',
+  templateUrl: 'timeline.html',
 })
-export class ActivityPage {
+export class TimelinePage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ActivityPage');
+    console.log('ionViewDidLoad TimelinePage');
   }
 
 }
