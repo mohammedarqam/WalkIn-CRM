@@ -84,8 +84,14 @@ export class AddClientPage {
       Time : moment().format()
 
     }).then(()=>{
-      this.navCtrl.pop();
-      loading.dismiss();
+      firebase.database().ref("Timelines/").child(firebase.auth().currentUser.uid).push({
+        EntityName : this.Name,
+        Type : "Client",
+        TimeStamp : moment().format(),
+      }).then(()=>{
+        this.navCtrl.pop();
+        loading.dismiss();
+      })
     })
   }
 

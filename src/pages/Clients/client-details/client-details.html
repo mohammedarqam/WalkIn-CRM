@@ -4,7 +4,7 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content class="content">
+<ion-content class="contentb">
 
 <ion-card>
   <ion-item>
@@ -52,8 +52,32 @@
     <h2 ion-text item-end>{{client.Time | date:'medium'}}</h2>
   </ion-item>
 
+</ion-card>
+
+<ion-card>
+  <ion-card-content>
+    <ion-card-title color="primary" >Timeline</ion-card-title>
+  </ion-card-content>
+    <div class="timeline">
+       
+      <div class="container right" *ngFor="let a of activities | async" >
+          <div class="content">
+            <button item-end class="ibtn" ion-button icon-only (click)="viewCall(a)" color="whiter" clear>
+              <ion-icon name="md-information-circle"></ion-icon>
+            </button>
+
+            <h2 item-start >{{a.Type}}</h2>
+            <p>{{a.Title}}</p>
+            <p>{{a.TimeStamp | date : 'medium'}}</p>
+          </div>
+        </div>
+     
+      </div>
 
 
 </ion-card>
+
+
+
 
 </ion-content>

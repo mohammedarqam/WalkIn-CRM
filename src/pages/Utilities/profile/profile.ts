@@ -14,9 +14,14 @@ export class ProfilePage {
 
   udi = firebase.auth().currentUser.uid;
   restRef= firebase.database().ref("Representatives").child(this.udi);
+  clientRef = firebase.database().ref("Clients").child(this.udi);
+  totClients : number;
+
   userName :string;
   level : number;  
   phone : number;  
+
+
   constructor(
   public navCtrl: NavController, 
   private firebaseAuth: AngularFireAuth,
@@ -24,12 +29,26 @@ export class ProfilePage {
   public app : App,
   public navParams: NavParams) {
     this.getUser();
+    this.getClients();
 }
 
   ionViewDidEnter(){
     this.getUser();
   }
-getUser(){
+
+  getClients(){
+  this.clientRef.once('value',itemSnapshot=>{
+    this.totClients = itemSnapshot.numChildren();
+  })
+
+  }
+
+
+
+
+
+
+  getUser(){
   let loading = this.loadingCtrl.create({
     content: 'Please wait...'
   });

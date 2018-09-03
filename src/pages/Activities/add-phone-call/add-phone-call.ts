@@ -39,8 +39,8 @@ export class AddPhoneCallPage {
       });
       loading.present();
 
-      firebase.database().ref("Timelines").child(this.userId).push({
-        Title : this.Name,
+      firebase.database().ref("Timelines/").child(this.userId).push({
+        EntityName : this.Name,
         Status : this.Status,
         Client : this.Client,
         Date : this.Date,
@@ -58,7 +58,25 @@ export class AddPhoneCallPage {
           Subject : this.sub,
           TimeStamp : moment().format()
         }).then(()=>{
-          loading.dismiss()
+          if(this.Status==="Upcoming"){
+            firebase.database().ref("Upcoming").child(this.userId).push({
+              Title : this.Name,
+              Status : this.Status,
+              Client : this.Client,
+              Date : this.Date,
+              Time :  this.Time,
+              Type : "Call",
+              Subject : this.sub,
+              TimeStamp : moment().format()
+                    
+            }).then(()=>{
+              this.navCtrl.pop();
+              loading.dismiss();
+            })
+          }else{
+            this.navCtrl.pop();
+            loading.dismiss()
+          }
         })
       })
     }
