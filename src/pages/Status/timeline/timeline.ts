@@ -25,7 +25,7 @@ export class TimelinePage {
   addCall(){
     this.navCtrl.push(AddPhoneCallPage);
   }
-  addAnAppointment(){
+  addAp(){
     this.navCtrl.push(AddAMeetingPage)
   }
 }

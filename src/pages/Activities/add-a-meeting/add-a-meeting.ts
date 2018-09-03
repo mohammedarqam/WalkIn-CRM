@@ -18,22 +18,29 @@ export class AddAMeetingPage {
   clients : Observable<any>;
   userId = firebase.auth().currentUser.uid;
 
+
+  Name : string;
+  Client  : string;
+  Date : string;
+  Time : string;
+  status : string = "Upcoming";
+
   constructor(
   public navCtrl: NavController, 
   public afDatabase: AngularFireDatabase,
   public navParams: NavParams) {
+    
 
-    this.clients = afDatabase.list<any>(`Clients/${this.userId}`,ref=>ref.orderByChild('Time'))
-    .snapshotChanges()
-    .map(
-    changes => {
-      return changes.map(c => ({
-        key: c.payload.key, ...c.payload.val()
-      }))
-    });
     }
 
 
+    addM(){
+      console.log(this.Date);
+
+    }
 
 
+    capsName(name){
+      this.Name = name.toUpperCase();
+    }
 }

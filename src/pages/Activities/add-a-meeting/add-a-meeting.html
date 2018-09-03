@@ -1,6 +1,9 @@
 <ion-header>
   <ion-navbar color="primary" >
     <ion-title>Add a Meeting</ion-title>
+    <ion-buttons end>
+      <button ion-button clear (click)="addM()">Save</button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
@@ -9,15 +12,27 @@
   <ion-card>
     <ion-item>
       <ion-label floating>Appointment Name</ion-label>
-      <ion-input type="text" [(ngModel)]="Name"></ion-input>
+      <ion-input type="text" (ionChange)="capsName(Name)" [(ngModel)]="Name"></ion-input>
     </ion-item>
+
 
     <ion-item>
       <ion-label floating>Client</ion-label>
       <ion-select [(ngModel)]="Client">
-        <ion-option *ngFor="let c of clients" [value]="c.Name">{{c.Name}}</ion-option>
+        <ion-option *ngFor="let c of clients" value="{{c.Name}}">{{c.Name}}</ion-option>
       </ion-select>
     </ion-item>
+
+    <ion-item>
+      <ion-label floating >Date</ion-label>
+      <ion-datetime [(ngModel)]="Date"></ion-datetime>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating >Time</ion-label>
+      <ion-datetime displayFormat="h : mm  a" [(ngModel)]="Date"></ion-datetime>
+    </ion-item>
+
 
   </ion-card>
 
