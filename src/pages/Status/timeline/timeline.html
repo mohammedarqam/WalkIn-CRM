@@ -11,7 +11,7 @@
         <div class="container right" *ngFor="let a of activities | async" >
             <div class="content">
               <h2>{{a.EntityName}}</h2>
-              <p>Lorem ipsum dolor sit amet, quo ei sm.</p>
+              <p>{{a.Status}}</p>
               <p>{{a.TimeStamp | date : 'medium'}}</p>
             </div>
           </div>
