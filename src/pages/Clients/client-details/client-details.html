@@ -7,6 +7,51 @@
 <ion-content class="content">
 
 <ion-card>
+  <ion-item>
+    <h2 ion-text item-start color="primary">Category</h2>
+    <h2 ion-text item-end>{{client.Category}}</h2>
+  </ion-item>
+
+  <ion-item>
+    <h2 ion-text item-start color="primary">Proposed Percentage</h2>
+    <h2 ion-text item-end>{{client.ProposedPercentage}}</h2>
+  </ion-item>
+
+  <ion-item>
+    <h2 ion-text item-start color="primary">Average Menu Pricing</h2>
+    <h2 ion-text item-end>Rs. {{client.AverageMenuPricing}}/-</h2>
+  </ion-item>
+
+  <ion-item>
+    <h2 ion-text item-start color="primary">Address</h2>
+    <h2 ion-text item-end>{{client.Address}}</h2>
+  </ion-item>
+
+  <ion-item>
+    <h2 ion-text item-start color="primary">Contact Name 1</h2>
+    <h2 ion-text item-end>{{client.ContactPersonName1}}</h2>
+  </ion-item>
+
+  <ion-item>
+    <h2 ion-text item-start color="primary">Contact Phone 1</h2>
+    <h2 ion-text item-end>{{client.ContactPersonPhone1}}</h2>
+  </ion-item>
+
+  <ion-item *ngIf="client.ContactPersonName2" >
+    <h2 ion-text item-start color="primary">Contact Name 2</h2>
+    <h2 ion-text item-end>{{client.ContactPersonName2}}</h2>
+  </ion-item>
+
+  <ion-item *ngIf="client.ContactPersonPhone2" >
+    <h2 ion-text item-start color="primary">Contact Phone 2</h2>
+    <h2 ion-text item-end>{{client.ContactPersonPhone2}}</h2>
+  </ion-item>
+
+  <ion-item>
+    <h2 ion-text item-start color="primary">Time</h2>
+    <h2 ion-text item-end>{{client.Time | date:'medium'}}</h2>
+  </ion-item>
+
 
 
 </ion-card>

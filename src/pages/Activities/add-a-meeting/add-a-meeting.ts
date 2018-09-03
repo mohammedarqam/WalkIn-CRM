@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Observable } from 'rxjs';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
+import { AngularFireDatabase} from 'angularfire2/database';
+import * as firebase from 'firebase';
 
-/**
- * Generated class for the AddAMeetingPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+
 
 @IonicPage()
 @Component({
@@ -15,11 +15,25 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class AddAMeetingPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+  clients : Observable<any>;
+  userId = firebase.auth().currentUser.uid;
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad AddAMeetingPage');
-  }
+  constructor(
+  public navCtrl: NavController, 
+  public afDatabase: AngularFireDatabase,
+  public navParams: NavParams) {
+
+    this.clients = afDatabase.list<any>(`Clients/${this.userId}`,ref=>ref.orderByChild('Time'))
+    .snapshotChanges()
+    .map(
+    changes => {
+      return changes.map(c => ({
+        key: c.payload.key, ...c.payload.val()
+      }))
+    });
+    }
+
+
+
 
 }

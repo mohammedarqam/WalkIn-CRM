@@ -4,10 +4,56 @@
     </ion-navbar>
   </ion-header>
   
-  <ion-content padding>
+  <ion-content class="contentb" >
   
-  
-  
-  
-  </ion-content>
+      <div class="timeline">
+       
+        <div class="container right">
+            <div class="content">
+              <h2>2011</h2>
+              <p>Lorem ipsum dolor sit amet, quo ei sm.</p>
+            </div>
+          </div>
+       
+
+          <div class="container right">
+            <div class="content">
+              <h2>2007</h2>
+              <p>Lorem ipsum dolor sit amet, quo ei simul congue exerci, ad nec admodum perfecto mnesarchum, vim ea mazim fierent detracto. Ea quis iuvaret expetendis his, te elit voluptua dignissim per, habeo iusto primis ea eam.</p>
+            </div>
+          </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+        
+
+
+
+<ion-fab bottom right >
+  <button ion-fab color="danger">
+    <ion-icon name="add"></ion-icon>
+  </button>
+  <ion-fab-list side="left">
+    <button ion-button color="danger" (click)="addCall()">Add a Call</button>
+  </ion-fab-list>
+
+  <ion-fab-list side="top">
+    <button ion-button class="fbtn" color="danger" (click)="addAnAppointment()">Add an Appointment</button>
+  </ion-fab-list>
+</ion-fab>  
+
+
+</ion-content>
   

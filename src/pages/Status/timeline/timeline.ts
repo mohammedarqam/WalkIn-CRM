@@ -1,12 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { AddAMeetingPage } from '../../Activities/add-a-meeting/add-a-meeting';
+import { AddPhoneCallPage } from '../../Activities/add-phone-call/add-phone-call';
 
-/**
- * Generated class for the TimelinePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -15,11 +11,21 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class TimelinePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+  public navCtrl: NavController, 
+  public navParams: NavParams) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad TimelinePage');
-  }
 
+
+
+
+
+  
+  addCall(){
+    this.navCtrl.push(AddPhoneCallPage);
+  }
+  addAnAppointment(){
+    this.navCtrl.push(AddAMeetingPage)
+  }
 }
