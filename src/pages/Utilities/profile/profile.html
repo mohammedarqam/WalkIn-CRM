@@ -1,23 +1,29 @@
 <ion-header>
   <ion-navbar color="primary" >
     <ion-title>Profile</ion-title>
+    <ion-buttons end>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 
 <ion-content>
+  
 
   <ion-card>
-    <ion-card-content>
-    <ion-card-title>{{userName}}</ion-card-title>
-    </ion-card-content>
+      <ion-item>
+      <h1 ion-text item-start color="primary" >{{user.Name}}</h1>
+      <button ion-button clear item-end color="danger" icon-only (click)="logoutConfirm()">
+        <ion-icon name="md-power"></ion-icon>
+      </button>
+      </ion-item>
       <ion-item>
         <h2 ion-text item-start color="primary">Level</h2>
-        <h2 ion-text item-end>Level {{level}}</h2>
+        <h2 ion-text item-end>Level {{user.Level}}</h2>
       </ion-item>
       <ion-item>
         <h2 ion-text item-start color="primary">Phone</h2>
-        <h2 ion-text item-end>{{phone}}</h2>
+        <h2 ion-text item-end>{{user.Phone}}</h2>
       </ion-item>
 
       <ion-item>
@@ -25,15 +31,16 @@
         <h2 ion-text item-end>{{totClients}}</h2>
       </ion-item>
 
+      <ion-item>
+        <h2 ion-text item-start color="primary">Status</h2>
+        <h2 ion-text item-end>{{user.Status}}</h2>
+      </ion-item>
+
 
     </ion-card>
 
 
+    <button ion-button color="primary" block (click)="Ca()">Contact Admin</button>
 
-
-  <button ion-button color="danger" block (click)="logout()" >
-    <ion-icon name=""></ion-icon>
-    Log Out
-  </button>
 
 </ion-content>

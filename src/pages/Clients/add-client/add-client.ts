@@ -35,8 +35,6 @@ export class AddClientPage {
     if(this.Name){
       if(this.Category){
         if(this.Address){
-          if(this.ContactPersonName1){
-            if(this.ContactPersonPhone1){
               if(this.AMP){
                 if(this.PP){
                   this.save();
@@ -46,12 +44,6 @@ export class AddClientPage {
               }else{
                 this.presentToast("Provide an Average Menu Pricing")
               }
-            }else{
-              this.presentToast("Provide a Phone Number for atleast 1 Contact Person")
-            }
-          }else{
-            this.presentToast("Atleast 1 Contact Person Details");
-          }
         }else{
           this.presentToast("Provide an Adderess");
         }

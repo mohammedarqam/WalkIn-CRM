@@ -1,0 +1,16 @@
+page-upcoming-details {
+    .topCard{
+        background-color: map-get($colors,primary);
+        
+    .omni{
+        position: relative;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, 0);
+        transform: translate(-50%, 0);
+        zoom: 10.0;
+
+    }    
+    }
+
+}

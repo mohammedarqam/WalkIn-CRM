@@ -1,55 +1,70 @@
 <ion-header>
   <ion-navbar color="primary" >
-    <ion-title>{{client.Name}}</ion-title>
+    <ion-title>{{details.Name}}</ion-title>
+    <ion-buttons end>
+      <button ion-button clear color="whiter" (click)="gtEdit()">Edit</button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content class="contentb">
 
+
+  <ion-card class="topCard" >
+    <ion-card-content>
+      <ion-icon class="omni" color="whiter" name="md-ionitron"></ion-icon>
+    </ion-card-content>
+  </ion-card>
+
 <ion-card>
   <ion-item>
-    <h2 ion-text item-start color="primary">Category</h2>
-    <h2 ion-text item-end>{{client.Category}}</h2>
+    <p ion-text item-start color="primary">Category</p>
+    <p ion-text item-end>{{details.Category}}</p>
   </ion-item>
 
   <ion-item>
-    <h2 ion-text item-start color="primary">Proposed Percentage</h2>
-    <h2 ion-text item-end>{{client.ProposedPercentage}}</h2>
+    <p ion-text item-start color="primary">Proposed Percentage</p>
+    <p ion-text item-end>{{details.ProposedPercentage}}</p>
   </ion-item>
 
   <ion-item>
-    <h2 ion-text item-start color="primary">Average Menu Pricing</h2>
-    <h2 ion-text item-end>Rs. {{client.AverageMenuPricing}}/-</h2>
+    <p ion-text item-start color="primary">Average Menu Pricing</p>
+    <p ion-text item-end>Rs. {{details.AverageMenuPricing}}/-</p>
   </ion-item>
 
   <ion-item>
-    <h2 ion-text item-start color="primary">Address</h2>
-    <h2 ion-text item-end>{{client.Address}}</h2>
+    <p ion-text item-start color="primary">Address</p>
+    <p ion-text item-end>{{details.Address}}</p>
   </ion-item>
 
   <ion-item>
-    <h2 ion-text item-start color="primary">Contact Name 1</h2>
-    <h2 ion-text item-end>{{client.ContactPersonName1}}</h2>
+    <p ion-text item-start color="primary">Contact Name 1</p>
+    <p ion-text item-end>{{details.ContactPersonName1}}</p>
   </ion-item>
 
   <ion-item>
-    <h2 ion-text item-start color="primary">Contact Phone 1</h2>
-    <h2 ion-text item-end>{{client.ContactPersonPhone1}}</h2>
+    <p ion-text item-start color="primary">Contact Phone 1</p>
+    <p ion-text item-end>{{details.ContactPersonPhone1}}</p>
   </ion-item>
 
-  <ion-item *ngIf="client.ContactPersonName2" >
-    <h2 ion-text item-start color="primary">Contact Name 2</h2>
-    <h2 ion-text item-end>{{client.ContactPersonName2}}</h2>
+  <ion-item *ngIf="details.ContactPersonName2" >
+    <p ion-text item-start color="primary">Contact Name 2</p>
+    <p ion-text item-end>{{details.ContactPersonName2}}</p>
   </ion-item>
 
-  <ion-item *ngIf="client.ContactPersonPhone2" >
-    <h2 ion-text item-start color="primary">Contact Phone 2</h2>
-    <h2 ion-text item-end>{{client.ContactPersonPhone2}}</h2>
+  <ion-item *ngIf="details.ContactPersonPhone2" >
+    <p ion-text item-start color="primary">Contact Phone 2</p>
+    <p ion-text item-end>{{details.ContactPersonPhone2}}</p>
+  </ion-item>
+
+  <ion-item *ngIf="details.LastUpdatedTime" >
+    <p ion-text item-start color="primary">Last Updated</p>
+    <p ion-text item-end>{{details.LastUpdatedTime | date:'medium'}}</p>
   </ion-item>
 
   <ion-item>
-    <h2 ion-text item-start color="primary">Time</h2>
-    <h2 ion-text item-end>{{client.Time | date:'medium'}}</h2>
+    <p ion-text item-start color="primary">Added Time</p>
+    <p ion-text item-end>{{details.Time | date:'medium'}}</p>
   </ion-item>
 
 </ion-card>

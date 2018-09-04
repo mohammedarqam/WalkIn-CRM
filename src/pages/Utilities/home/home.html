@@ -1,6 +1,11 @@
 <ion-header>
   <ion-navbar color="primary" >
     <ion-title>WalkIn CRM</ion-title>
+  <ion-buttons end>
+    <button ion-button (click)="mes()" clear icon-only>
+      <ion-icon name="ios-chatbubbles"></ion-icon>
+    </button>
+  </ion-buttons>
   </ion-navbar>
 </ion-header>
 
@@ -19,14 +24,47 @@
   </ion-row>
 </ion-grid>
 
+<ion-navbar color="dark">
+  <h6 ion-text color="whiter" >Upcoming Activites</h6>
+</ion-navbar>
 
 
-<!-- <ion-card *ngFor="let a of activities">
-  <ion-card-content>
-    <ion-card-title>
-      {{a.Type}}
-    </ion-card-title>
-  </ion-card-content>
-</ion-card> -->
+<div *ngFor="let a of activities | async">
+<ion-card class="upCard" >
+<ion-item color="primary" (click)="details(a)" >
+<ion-icon  item-start [name]="tp(a.Type)"></ion-icon>
+<ion-card-title item-start ion-text color="whiter" >{{a.ClientName}}</ion-card-title>  
+<ion-icon name="md-arrow-dropright-circle" icon-only item-end ></ion-icon>
+</ion-item>
+<ion-item>
+  <h2>{{a.Time}}</h2>
+</ion-item>
+</ion-card>
+<div class="vl"></div>
+</div>
+
+<ion-item *ngIf="moonShow" class="content" >
+<ion-icon name="ios-moon" class="noactI" ></ion-icon>
+<h1 class="noact" >No Upcoming Activities</h1>
+</ion-item>
+
+
+<ion-item color="dark" *ngIf="!moonShow"  class="lastC"  >
+<h2 ion-text color="whiter" >Done</h2>  
+</ion-item>
+
+
+<ion-fab bottom right >
+  <button ion-fab color="danger">
+    <ion-icon name="add"></ion-icon>
+  </button>
+  <ion-fab-list side="left">
+    <button ion-button color="danger" (click)="addCall()">Add a Call</button>
+  </ion-fab-list>
+
+  <ion-fab-list side="top">
+    <button ion-button class="fbtn" color="danger" (click)="addAp()">Add an Appointment</button>
+  </ion-fab-list>
+</ion-fab>  
 
 </ion-content>

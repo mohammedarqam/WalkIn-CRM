@@ -21,6 +21,9 @@ export class LoginPage {
   private firebaseAuth: AngularFireAuth,
   public navParams: NavParams
   ) {
+  }
+
+  ionViewWillEnter(){
     let loading = this.loadingCtrl.create({
       content: 'Please wait...'
     });
@@ -31,8 +34,8 @@ export class LoginPage {
       }
     })
     loading.dismiss();
-  }
 
+  }
 
   checkData(){
     if(this.email){

@@ -11,10 +11,12 @@ import moment from 'moment';
   templateUrl: 'add-a-meeting.html',
 })
 export class AddAMeetingPage {
-  clients : Array<any>;
+  public clients : Array<any>;
   userId = firebase.auth().currentUser.uid;
   clientRef = firebase.database().ref("Clients/").child(this.userId);
 
+
+  ClientName : string;
 
   Name : string;
   Client  : string;
@@ -23,15 +25,17 @@ export class AddAMeetingPage {
   Status : string;
   sub : string;
 
+  CN : string ;
 
   constructor(
   public navCtrl: NavController, 
   public loadingCtrl: LoadingController,
   public navParams: NavParams) {
-    this.getClients();
     }
 
-
+    ionViewWillEnter(){
+      this.getClients();
+    }
     
     addM(){
       let loading = this.loadingCtrl.create({
@@ -43,6 +47,7 @@ export class AddAMeetingPage {
         EntityName : this.Name,
         Status : this.Status,
         Client : this.Client,
+        ClientName : this.ClientName,
         Date : this.Date,
         Time :  this.Time,
         Type : "Meeting",
@@ -62,7 +67,8 @@ export class AddAMeetingPage {
             firebase.database().ref("Upcoming").child(this.userId).push({
               Title : this.Name,
               Status : this.Status,
-              Client : this.Client,
+              ClientKey : this.Client,
+              ClientName : this.ClientName,
               Date : this.Date,
               Time :  this.Time,
               Type : "Meeting",
@@ -83,10 +89,6 @@ export class AddAMeetingPage {
 
 
     getClients(){
-    let loading = this.loadingCtrl.create({
-      content: 'Please wait...'
-    });
-    loading.present();
       this.clientRef.once('value',itemSnapshot=>{
         this.clients = [];
         itemSnapshot.forEach(itemSnap =>{
@@ -95,13 +97,16 @@ export class AddAMeetingPage {
           this.clients.push(temp);
           return false;
         });
-    }).then(()=>{
-      loading.dismiss();
-    }) ;
+    })
 }
 
+gCN(){
+  this.clientRef.child(this.Client).once('value',item=>{
+    this.ClientName =  item.val().Name;
+  })
+}
 
-    capsName(name){
+capsName(name){
       this.Name = name.toUpperCase();
     }
 }

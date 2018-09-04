@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { AddAMeetingPage } from '../../Activities/add-a-meeting/add-a-meeting';
-import { AddPhoneCallPage } from '../../Activities/add-phone-call/add-phone-call';
 import { AngularFireDatabase} from 'angularfire2/database';
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map';
@@ -42,11 +40,4 @@ export class TimelinePage {
 
 
 
-  
-  addCall(){
-    this.navCtrl.push(AddPhoneCallPage);
-  }
-  addAp(){
-    this.navCtrl.push(AddAMeetingPage)
-  }
 }

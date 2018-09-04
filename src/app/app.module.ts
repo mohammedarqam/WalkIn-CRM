@@ -20,6 +20,11 @@ import { TimelinePage } from '../pages/Status/timeline/timeline';
 import { AddAMeetingPage } from '../pages/Activities/add-a-meeting/add-a-meeting';
 import { AddPhoneCallPage } from '../pages/Activities/add-phone-call/add-phone-call';
 import { CloseClientPage } from '../pages/Activities/close-client/close-client';
+import { ClientEditPage } from '../pages/Clients/client-edit/client-edit';
+import { ContactAdminPage } from '../pages/Contact/contact-admin/contact-admin';
+import { ContactRepPage } from '../pages/Contact/contact-rep/contact-rep';
+import { TimelineDetailPage } from '../pages/Status/timeline-detail/timeline-detail';
+import { FinancePage } from '../pages/Utilities/finance/finance';
 
 export const firebaseConfig=({
   apiKey: "AIzaSyDNBLBd2H_xJ3Ahhif0oZxaPJnXGK9nqUY",
@@ -46,6 +51,11 @@ export const firebaseConfig=({
     AddAMeetingPage,
     AddPhoneCallPage,
     CloseClientPage,
+    ClientEditPage,
+    ContactAdminPage,
+    ContactRepPage,
+    TimelineDetailPage,
+    FinancePage,
   ],
   imports: [
     BrowserModule,
@@ -71,6 +81,11 @@ export const firebaseConfig=({
     AddAMeetingPage,
     AddPhoneCallPage,
     CloseClientPage,
+    ClientEditPage,
+    ContactAdminPage,
+    ContactRepPage,
+    TimelineDetailPage,
+    FinancePage,
   ],
   providers: [
     StatusBar,

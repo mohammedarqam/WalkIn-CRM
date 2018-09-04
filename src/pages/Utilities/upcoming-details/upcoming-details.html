@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-navbar color="primary" >
+    <ion-title>{{a.Type}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+
+
+<ion-card class="topCard" >
+  <ion-card-content>
+    <ion-icon class="omni" color="whiter" [name]="tp(a.Type)"></ion-icon>
+  </ion-card-content>
+</ion-card>
+
+<ion-card>
+<ion-item>
+  <h2 ion-text item-start color="primary">Client</h2>
+  <h2 ion-text item-end>{{a.ClientName}}</h2>
+</ion-item>
+</ion-card>
+</ion-content>

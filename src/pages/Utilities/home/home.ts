@@ -5,6 +5,11 @@ import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import * as firebase from 'firebase';
+import { AddPhoneCallPage } from '../../Activities/add-phone-call/add-phone-call';
+import { AddAMeetingPage } from '../../Activities/add-a-meeting/add-a-meeting';
+import { ContactRepPage } from '../../Contact/contact-rep/contact-rep';
+import { TimelineDetailPage } from '../../Status/timeline-detail/timeline-detail';
+import { UpcomingDetailsPage } from '../../upcoming-details/upcoming-details';
 
 
 @Component({
@@ -15,7 +20,7 @@ export class HomePage {
 
   totClients : number=0;
   totUpcoming : number=0;
-
+  moonShow : boolean ;
   activities : Observable<any>;
   userId = firebase.auth().currentUser.uid;
 
@@ -24,10 +29,8 @@ export class HomePage {
   public afDatabase: AngularFireDatabase,
   public loadingCtrl: LoadingController,
   ) {
-    this.getClients();
-    this.getUpcoming();
 
-    this.activities = afDatabase.list<any>(`Upcoming/${this.userId}`,ref=>ref.orderByChild('TimeStamp'))
+    this.activities = afDatabase.list<any>(`Upcoming/${this.userId}`,ref=>ref.orderByChild('Time'))
     .snapshotChanges()
     .map(
     changes => {
@@ -38,7 +41,9 @@ export class HomePage {
 
   }
 
-
+  ionViewWillEnter(){
+    this.getClients();
+  }
 
   getClients(){
     let loading = this.loadingCtrl.create({
@@ -48,22 +53,45 @@ export class HomePage {
       firebase.database().ref("Clients/").child(firebase.auth().currentUser.uid).once('value',items=>{
       this.totClients = items.numChildren();
     }).then(()=>{
-      loading.dismiss();
-    })
-  }
-
-  getUpcoming(){
-    let loading = this.loadingCtrl.create({
-      content: 'Please wait...'
-    });
-    loading.present();
       firebase.database().ref("Upcoming/").child(firebase.auth().currentUser.uid).once('value',items=>{
-      this.totUpcoming = items.numChildren();
-    }).then(()=>{
-      loading.dismiss();
+        this.totUpcoming = items.numChildren();
+        if(this.totUpcoming>0){
+          this.moonShow = false;
+        }else{
+          this.moonShow = true;
+        }
+      }).then(()=>{
+        loading.dismiss();
+      })
     })
   }
 
 
+  
+  addCall(){
+    this.navCtrl.push(AddPhoneCallPage);
+  }
+  addAp(){
+    this.navCtrl.push(AddAMeetingPage)
+  }
+
+  mes(){
+    this.navCtrl.push(ContactRepPage);
+  }
+
+
+
+  tp(a){
+   if(a==="Meeting"){
+      return "ios-bowtie"
+    }
+    if(a==="Call"){
+      return "ios-call"
+    }
+  }
+
+  details(a){
+    this.navCtrl.push(UpcomingDetailsPage,{a : a});
+  }
 
 }

@@ -10,25 +10,10 @@
 
 <ion-card *ngFor="let c of clients | async" >
 <ion-item color="primary" >
+<ion-icon  item-start name="md-ionitron"></ion-icon>
 <ion-card-title item-start ion-text color="whiter" >{{c.Name}}</ion-card-title>  
-<button ion-button  item-end color="whiter" clear  (click)="details(c)" >Details</button>
+<button ion-button  item-end color="whiter" outline  (click)="details(c)" >Details</button>
 </ion-item>
-
-<ion-item>
-  <h2 ion-text color="primary" item-start>Name</h2>
-  <h2 ion-text item-end>{{c.ContactPersonName1}}</h2>
-</ion-item>
-
-<ion-item>
-  <h2 ion-text color="primary" item-start>Contact</h2>
-  <h2 ion-text item-end>{{c.ContactPersonPhone1}}</h2>
-</ion-item>
-
-<ion-item>
-  <h2 ion-text color="primary" item-start>Time</h2>
-  <h2 ion-text item-end>{{c.Time | date:'medium'}}</h2>
-</ion-item>
-
 </ion-card>
 
 

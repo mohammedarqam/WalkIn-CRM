@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, App, LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, App, LoadingController, AlertController } from 'ionic-angular';
 import { LoginPage } from '../login/login';
 import * as firebase from 'firebase';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { ContactAdminPage } from '../../Contact/contact-admin/contact-admin';
 
 
 @IonicPage()
@@ -17,23 +18,20 @@ export class ProfilePage {
   clientRef = firebase.database().ref("Clients").child(this.udi);
   totClients : number;
 
-  userName :string;
-  level : number;  
-  phone : number;  
-
+  user : Array<any> = [];
 
   constructor(
   public navCtrl: NavController, 
   private firebaseAuth: AngularFireAuth,
+  private alertCtrl: AlertController,
   public loadingCtrl: LoadingController,
   public app : App,
   public navParams: NavParams) {
-    this.getUser();
-    this.getClients();
 }
 
-  ionViewDidEnter(){
+  ionViewWillEnter(){
     this.getUser();
+    this.getClients();
   }
 
   getClients(){
@@ -55,23 +53,37 @@ export class ProfilePage {
   loading.present();
 
   this.restRef.once('value',itemSnapshot=>{
-    this.userName = itemSnapshot.val().Name;
-    this.level = itemSnapshot.val().Level;
-    this.phone = itemSnapshot.val().Phone;
+    this.user = itemSnapshot.val()
   }).then(()=>{
     loading.dismiss();
   }) ;
   }
 
+
+  Ca(){
+    this.navCtrl.push(ContactAdminPage);
+  }
   
-  
-  
-  
-  
-  
-  
-  
-  
+  logoutConfirm(){
+    let alert = this.alertCtrl.create({
+      title: 'Do you wanna Logout ?',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+          }
+        },
+        {
+          text: 'Log Out',
+          handler: () => {
+            this.logout();
+          }
+        }
+      ]
+    });
+    alert.present();
+  }  
   
   logout() {
     this.firebaseAuth.auth.signOut().then(()=>{
