@@ -22,7 +22,11 @@ export class ClientListPage {
   public afDatabase: AngularFireDatabase,
   public navParams: NavParams) {
     
-    this.clients = afDatabase.list<any>(`Clients/${this.userId}`,ref=>ref.orderByChild('Time'))
+    this.clients = afDatabase.list<any>(`Clients/${this.userId}`,ref=>{
+      let q =  ref
+      .orderByChild('Time')
+      return q;
+    })
     .snapshotChanges()
     .map(
     changes => {
@@ -36,9 +40,6 @@ export class ClientListPage {
 details(client){
   this.navCtrl.push(ClientDetailsPage, {client : client});
 }
-
-
-
 
 
 

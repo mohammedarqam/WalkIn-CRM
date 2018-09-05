@@ -8,8 +8,7 @@ import * as firebase from 'firebase';
 import { AddPhoneCallPage } from '../../Activities/add-phone-call/add-phone-call';
 import { AddAMeetingPage } from '../../Activities/add-a-meeting/add-a-meeting';
 import { ContactRepPage } from '../../Contact/contact-rep/contact-rep';
-import { TimelineDetailPage } from '../../Status/timeline-detail/timeline-detail';
-import { UpcomingDetailsPage } from '../../upcoming-details/upcoming-details';
+import { UpcomingDetailsPage } from '../upcoming-details/upcoming-details';
 
 
 @Component({

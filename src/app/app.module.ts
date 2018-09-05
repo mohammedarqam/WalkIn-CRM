@@ -25,6 +25,7 @@ import { ContactAdminPage } from '../pages/Contact/contact-admin/contact-admin';
 import { ContactRepPage } from '../pages/Contact/contact-rep/contact-rep';
 import { TimelineDetailPage } from '../pages/Status/timeline-detail/timeline-detail';
 import { FinancePage } from '../pages/Utilities/finance/finance';
+import { UpcomingDetailsPage } from '../pages/Utilities/upcoming-details/upcoming-details';
 
 export const firebaseConfig=({
   apiKey: "AIzaSyDNBLBd2H_xJ3Ahhif0oZxaPJnXGK9nqUY",
@@ -56,6 +57,7 @@ export const firebaseConfig=({
     ContactRepPage,
     TimelineDetailPage,
     FinancePage,
+    UpcomingDetailsPage,
   ],
   imports: [
     BrowserModule,
@@ -86,6 +88,7 @@ export const firebaseConfig=({
     ContactRepPage,
     TimelineDetailPage,
     FinancePage,
+    UpcomingDetailsPage,
   ],
   providers: [
     StatusBar,

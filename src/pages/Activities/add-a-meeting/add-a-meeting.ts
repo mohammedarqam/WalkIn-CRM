@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, ToastController } from 'ionic-angular';
 import * as firebase from 'firebase';
 import moment from 'moment';
 
@@ -29,6 +29,7 @@ export class AddAMeetingPage {
 
   constructor(
   public navCtrl: NavController, 
+  public toastCtrl: ToastController,
   public loadingCtrl: LoadingController,
   public navParams: NavParams) {
     }
@@ -37,6 +38,34 @@ export class AddAMeetingPage {
       this.getClients();
     }
     
+    checkData(){
+      if(this.Name){
+        if(this.Status){
+          if(this.Client){
+            if(this.Date){
+              if(this.Time){
+                this.addM();
+              }else{
+                this.presentToast("Select Time");
+              }
+            }else{
+              this.presentToast("Date not Selected");
+            }
+          }else{
+            this.presentToast("Select a Client");
+          }
+        }else{
+          this.presentToast("Assign a Status");
+        }
+      }else{
+        this.presentToast("Enter a Title");
+      }
+    }
+
+
+
+
+
     addM(){
       let loading = this.loadingCtrl.create({
         content: 'Please wait...'
@@ -109,4 +138,16 @@ gCN(){
 capsName(name){
       this.Name = name.toUpperCase();
     }
-}
+
+  presentToast(msg) {
+    let toast = this.toastCtrl.create({
+      message: msg,
+      duration: 4000,
+      position: 'top',
+      showCloseButton: false,
+    });
+    toast.present();
+  }
+
+
+  }

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, ToastController } from 'ionic-angular';
 import * as firebase from 'firebase';
 import moment from 'moment';
 
@@ -10,11 +10,12 @@ import moment from 'moment';
   templateUrl: 'add-phone-call.html',
 })
 export class AddPhoneCallPage {
-
-  clients : Array<any>;
+  public clients : Array<any>;
   userId = firebase.auth().currentUser.uid;
   clientRef = firebase.database().ref("Clients/").child(this.userId);
 
+
+  ClientName : string;
 
   Name : string;
   Client  : string;
@@ -23,16 +24,45 @@ export class AddPhoneCallPage {
   Status : string;
   sub : string;
 
+  CN : string ;
 
   constructor(
   public navCtrl: NavController, 
   public loadingCtrl: LoadingController,
+  public toastCtrl: ToastController,
   public navParams: NavParams) {
-    this.getClients();
+    }
+
+    ionViewWillEnter(){
+      this.getClients();
+    }
+
+    checkData(){
+      if(this.Name){
+        if(this.Status){
+          if(this.Client){
+            if(this.Date){
+              if(this.Time){
+                this.addC();
+              }else{
+                this.presentToast("Select Time");
+              }
+            }else{
+              this.presentToast("Date not Selected");
+            }
+          }else{
+            this.presentToast("Select a Client");
+          }
+        }else{
+          this.presentToast("Assign a Status");
+        }
+      }else{
+        this.presentToast("Enter a Title");
+      }
     }
 
 
-    
+
     addC(){
       let loading = this.loadingCtrl.create({
         content: 'Please wait...'
@@ -43,6 +73,7 @@ export class AddPhoneCallPage {
         EntityName : this.Name,
         Status : this.Status,
         Client : this.Client,
+        ClientName : this.ClientName,
         Date : this.Date,
         Time :  this.Time,
         Type : "Call",
@@ -62,7 +93,8 @@ export class AddPhoneCallPage {
             firebase.database().ref("Upcoming").child(this.userId).push({
               Title : this.Name,
               Status : this.Status,
-              Client : this.Client,
+              ClientKey : this.Client,
+              ClientName : this.ClientName,
               Date : this.Date,
               Time :  this.Time,
               Type : "Call",
@@ -83,10 +115,6 @@ export class AddPhoneCallPage {
 
 
     getClients(){
-    let loading = this.loadingCtrl.create({
-      content: 'Please wait...'
-    });
-    loading.present();
       this.clientRef.once('value',itemSnapshot=>{
         this.clients = [];
         itemSnapshot.forEach(itemSnap =>{
@@ -95,13 +123,31 @@ export class AddPhoneCallPage {
           this.clients.push(temp);
           return false;
         });
-    }).then(()=>{
-      loading.dismiss();
-    }) ;
+    })
 }
 
+gCN(){
+  this.clientRef.child(this.Client).once('value',item=>{
+    this.ClientName =  item.val().Name;
+  })
+}
 
-    capsName(name){
+capsName(name){
       this.Name = name.toUpperCase();
     }
-}
+
+    presentToast(msg) {
+      let toast = this.toastCtrl.create({
+        message: msg,
+        duration: 4000,
+        position: 'top',
+        showCloseButton: false,
+      });
+      toast.present();
+    }
+  
+  
+
+
+
+  }

@@ -2,7 +2,7 @@
   <ion-navbar color="primary" >
     <ion-title>Add a Call</ion-title>
     <ion-buttons end>
-      <button ion-button clear (click)="addC()">Save</button>
+      <button ion-button clear (click)="checkData()">Save</button>
     </ion-buttons>
   </ion-navbar>
 </ion-header>
@@ -25,7 +25,7 @@
 
     <ion-item>
       <ion-label floating>Client</ion-label>
-      <ion-select class="sel" [(ngModel)]="Client">
+      <ion-select class="sel" [(ngModel)]="Client" (ionChange)="gCN(Client)" >
         <ion-option *ngFor="let c of clients" value="{{c.key}}">{{c.Name}}</ion-option>
       </ion-select>
     </ion-item>
