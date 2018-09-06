@@ -145,7 +145,10 @@ capsName(name){
       });
       toast.present();
     }
-  
+    getCurrentTime() {
+      return moment().format();
+  }
+    
   
 
 

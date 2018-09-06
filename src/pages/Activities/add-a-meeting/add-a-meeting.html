@@ -10,10 +10,25 @@
 <ion-content class="content" >
 
   <ion-card>
+
+    <ion-item>
+      <ion-label floating>Client</ion-label>
+      <ion-select class="sel" [(ngModel)]="Client" (ionChange)="gCN(Client)" >
+        <ion-option *ngFor="let c of clients" value="{{c.key}}">{{c.Name}}</ion-option>
+      </ion-select>
+    </ion-item>
+
+
     <ion-item>
       <ion-label floating>Call Title</ion-label>
       <ion-input type="text" (ionChange)="capsName(Name)" [(ngModel)]="Name"></ion-input>
     </ion-item>
+
+    <ion-item>
+      <ion-label floating>Main Subject</ion-label>
+      <ion-input type="text" [(ngModel)]="sub"></ion-input>
+    </ion-item>
+
 
     <ion-item>
       <ion-label floating>Status</ion-label>
@@ -23,16 +38,10 @@
       </ion-select>
     </ion-item>
 
-    <ion-item>
-      <ion-label floating>Client</ion-label>
-      <ion-select class="sel" [(ngModel)]="Client" (ionChange)="gCN(Client)" >
-        <ion-option *ngFor="let c of clients" value="{{c.key}}">{{c.Name}}</ion-option>
-      </ion-select>
-    </ion-item>
 
     <ion-item>
       <ion-label  floating >Date</ion-label>
-      <ion-datetime class="sel"  [(ngModel)]="Date"></ion-datetime>
+      <ion-datetime class="sel" max="2018" [min]="getCurrentTime()"  [(ngModel)]="Date"></ion-datetime>
     </ion-item>
 
     <ion-item>
@@ -40,10 +49,6 @@
       <ion-datetime class="sel" displayFormat="h : mm  a" [(ngModel)]="Time"></ion-datetime>
     </ion-item>
 
-    <ion-item>
-      <ion-label floating>Main Subject</ion-label>
-      <ion-input type="text" [(ngModel)]="sub"></ion-input>
-    </ion-item>
 
   </ion-card>
 

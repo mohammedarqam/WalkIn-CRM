@@ -29,7 +29,7 @@ export class HomePage {
   public loadingCtrl: LoadingController,
   ) {
 
-    this.activities = afDatabase.list<any>(`Upcoming/${this.userId}`,ref=>ref.orderByChild('Time'))
+    this.activities = afDatabase.list<any>(`Upcoming/${this.userId}`,ref=>ref.orderByChild('Date'))
     .snapshotChanges()
     .map(
     changes => {
